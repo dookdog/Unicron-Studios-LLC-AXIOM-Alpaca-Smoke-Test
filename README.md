@@ -29,9 +29,18 @@ leaked passphrase as burned.
 
 ## Deploy
 
-`.github/workflows/deploy.yml` publishes everything to GitHub Pages on every push
-to `main` (it enables Pages on first run). The gate then serves at
-`/preview/` on this repo's Pages URL.
+Served directly from the `main` branch by GitHub Pages — no build step, no
+workflow. One-time setup (owner only, in the GitHub UI):
+
+**Settings → Pages → Build and deployment → Source: Deploy from a branch →
+Branch: `main` / `/ (root)` → Save.**
+
+GitHub then serves every file at the repo root, so the gate publishes at
+`/preview/` on this repo's Pages URL. `.nojekyll` keeps the files un-processed.
+
+(An Actions-based deploy workflow was removed: enabling Pages via the workflow
+token isn't permitted on this repo — "Resource not accessible by integration" —
+so the simpler branch source is used instead.)
 
 ## Note
 
